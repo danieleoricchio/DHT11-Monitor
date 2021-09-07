@@ -28,6 +28,8 @@ namespace csharp_src
 
             chart1.Series["Temperatura"].Points.AddXY(1, 1);
             chart1.Series["Umiditá"].Points.AddXY(1, 1);
+
+            timer1.Start();
         }
 
         private void comboBoxPorte_DropDown(object sender, EventArgs e)
@@ -52,7 +54,6 @@ namespace csharp_src
                 chart1.Series["Umiditá"].Points.Clear();
 
                 MessageBox.Show("Connessione effettuata!");
-
             }
             catch (Exception error)
             {
@@ -70,7 +71,6 @@ namespace csharp_src
                 btnClose.Enabled = false;
 
                 MessageBox.Show("Disconnessione effettuata!");
-
             }
             catch (Exception error)
             {
@@ -107,6 +107,12 @@ namespace csharp_src
                 chart1.Series["Temperatura"].Points.Add(temperatura);
                 chart1.Series["Umiditá"].Points.Add(umidita);
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label_tempo.Text = DateTime.Now.ToLongTimeString();
+            label_data.Text = DateTime.Now.ToLongDateString();
         }
 
         private void Data_Parsing(string data)
